@@ -14,6 +14,8 @@
 
 // part: metadata
 
+hide = true
+
 [tags]
 broken-vendor = "ClickHouse has no dedicated bytestring type; it is the same as the string type, and by default all strings are treated as Arrow strings, meaning binary data in ClickHouse results in invalid string data in Arrow"
 

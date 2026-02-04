@@ -57,4 +57,4 @@ Note: The example above is for Python using the [adbc-driver-manager](https://py
 
 {{ footnotes|safe }}
 
-[clickhouse]:
+[clickhouse]: https://clickhouse.com/

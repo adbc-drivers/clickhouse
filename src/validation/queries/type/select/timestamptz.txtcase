@@ -15,7 +15,8 @@
 // part: metadata
 
 [tags]
-caveats = ["ClickHouse DateTime64(6, 'UTC') has limited range (1900 to 2262)"]
+caveats = ["DateTime64 has limited range (1900 to 2299)"]
+sql-type-name = "DateTime64 (with time zone)"
 
 // part: setup_query
 

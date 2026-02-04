@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import adbc_driver_manager
 import adbc_drivers_validation.tests.statement as statement_tests
-import pytest
 
 from . import clickhouse
 
@@ -23,16 +23,37 @@ def pytest_generate_tests(metafunc) -> None:
 
 
 class TestStatement(statement_tests.TestStatement):
-    @pytest.mark.xfail(reason="prepare() not implemented")
-    def test_prepare(self, driver, conn) -> None:
-        super().test_prepare(driver, conn)
-
-    @pytest.mark.xfail(reason="prepare() not implemented")
-    def test_parameter_execute(self, driver, conn) -> None:
-        super().test_parameter_execute(driver, conn)
-
-    @pytest.mark.xfail(
-        reason="ClickHouse lightweight updates require special table settings"
-    )
     def test_rows_affected(self, driver, conn) -> None:
-        super().test_rows_affected(driver, conn)
+        # ClickHouse doesn't like UPDATE, so truncate the upstream test
+        table_name = "test_rows_affected"
+        with conn.cursor() as cursor:
+            cursor.adbc_statement.set_sql_query(
+                driver.drop_table(table_name="test_rows_affected")
+            )
+            try:
+                cursor.adbc_statement.execute_update()
+            except adbc_driver_manager.Error as e:
+                # Some databases have no way to do DROP IF EXISTS
+                if not driver.is_table_not_found(table_name=table_name, error=e):
+                    raise
+
+            quoted_name = driver.quote_identifier(table_name)
+            cursor.adbc_statement.set_sql_query(f"CREATE TABLE {quoted_name} (id INT)")
+            rows_affected = cursor.adbc_statement.execute_update()
+
+            if (
+                driver.features.statement_rows_affected
+                and driver.features.statement_rows_affected_ddl
+            ):
+                assert rows_affected == 0
+            else:
+                assert rows_affected == -1
+
+            cursor.adbc_statement.set_sql_query(
+                f"INSERT INTO {quoted_name} (id) VALUES (1)"
+            )
+            rows_affected = cursor.adbc_statement.execute_update()
+            if driver.features.statement_rows_affected:
+                assert rows_affected == 1
+            else:
+                assert rows_affected == -1

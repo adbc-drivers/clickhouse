@@ -13,28 +13,5 @@
 // limitations under the License.
 
 // part: metadata
-
 [tags]
-caveats = ["ClickHouse datetime without timezone is interpreted in **server** timezone"]
-sql-type-name = "DateTime64 (no time zone)"
-
-// part: query
-
-SELECT CAST('2023-05-15 13:45:30' AS DateTime64(6)) AS res
-
-// part: expected_schema
-
-{
-    "format": "+s",
-    "children": [
-        {
-            "name": "res",
-            "format": "tsu:UTC",
-            "flags": []
-        }
-    ]
-}
-
-// part: expected
-
-{"res": 1684158330000000}
+sql-type-name = "Float64"

@@ -16,3 +16,4 @@
 
 [tags]
 broken-vendor = "ClickHouse Time type is not supported in Arrow format export"
+sql-type-name = "Time"
