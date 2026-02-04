@@ -11,10 +11,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import argparse
+from pathlib import Path
 
-.claude/
-src/build/
-src/generated/
-target/
-.doit.db
-validation-report.xml
+import adbc_drivers_validation.generate_documentation as generate_documentation
+
+from . import clickhouse
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+
+    template = Path(__file__).parent.parent.parent / "docs/clickhouse.md"
+    template = template.resolve()
+
+    generate_documentation.generate(
+        clickhouse.QUIRKS,
+        Path("validation-report.xml").resolve(),
+        template,
+        args.output.resolve(),
+    )

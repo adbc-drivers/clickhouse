@@ -12,9 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.claude/
-src/build/
-src/generated/
-target/
-.doit.db
-validation-report.xml
+import adbc_drivers_validation.tests.query as query_tests
+
+from . import clickhouse
+
+
+def pytest_generate_tests(metafunc) -> None:
+    return query_tests.generate_tests(clickhouse.QUIRKS, metafunc)
+
+
+class TestQuery(query_tests.TestQuery):
+    pass
