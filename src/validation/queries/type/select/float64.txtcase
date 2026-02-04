@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// part: metadata
+[tags]
+sql-type-name = "Float64"
+
 // part: setup_query
 
 CREATE TABLE test_float64 (

@@ -15,7 +15,8 @@
 // part: metadata
 
 [tags]
-caveats = ["ClickHouse Date32 has limited range (1900-01-01 to 2299-12-31)"]
+caveats = ["Date32 has limited range (1900-01-01 to 2299-12-31)"]
+sql-type-name = "Date32"
 
 // part: setup_query
 

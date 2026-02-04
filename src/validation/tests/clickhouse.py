@@ -26,6 +26,7 @@ class ClickHouseQuirks(model.DriverQuirks):
     short_version = "25.12"
     features = model.DriverFeatures(
         statement_bind=False,
+        statement_prepare=False,
         current_catalog="",
         current_schema="db",
         supported_xdbc_fields=[],

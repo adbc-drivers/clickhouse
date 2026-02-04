@@ -13,9 +13,8 @@
 // limitations under the License.
 
 // part: metadata
-
 [tags]
-caveats = ["Special characters like {} are not supported due to clickhouse crate parameter parsing"]
+sql-type-name = "String"
 
 // part: setup_query
 

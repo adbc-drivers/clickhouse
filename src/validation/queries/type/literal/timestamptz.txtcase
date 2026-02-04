@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// part: metadata
+
+[tags]
+sql-type-name = "DateTime64 (with time zone)"
+
 // part: query
 
 SELECT CAST('2023-05-15 13:45:30' AS DateTime64(6, 'UTC')) AS res
