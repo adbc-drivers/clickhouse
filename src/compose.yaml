@@ -1,4 +1,4 @@
-# Copyright (c) 2025 ADBC Drivers Contributors
+# Copyright (c) 2026 ADBC Drivers Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ services:
       CLICKHOUSE_SKIP_USER_SETUP: 1
       CLICKHOUSE_USER: ch
     healthcheck:
-      test:  wget --no-verbose --tries=1 http://127.0.0.1:8123/ping || exit 1
+      test: wget --no-verbose --tries=1 http://127.0.0.1:8123/ping || exit 1
       interval: 5s
       timeout: 5s
       retries: 10

@@ -16,7 +16,6 @@
 set -euo pipefail
 
 main() {
-    # "test" or "release"
     local -r platform="${1}"
     # shellcheck disable=SC2034
     local -r arch="${2}"
