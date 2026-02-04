@@ -46,8 +46,13 @@ repos:
     exclude: '\.(bat|sln)$'
   - id: trailing-whitespace
 
+- repo: https://github.com/koalaman/shellcheck-precommit
+  rev: 99470f5e12208ff0fb17ab81c3c494f7620a1d8d  # frozen: v0.11.0
+  hooks:
+  - id: shellcheck
+
 - repo: https://github.com/adbc-drivers/dev
-  rev: ac8c34ab0346761fbed0c554536ee90682ce00ae
+  rev: eb8f394c2c193cbb44ad1c348ccd036372b87394
   hooks:
   - id: rat
 

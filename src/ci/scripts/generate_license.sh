@@ -1,11 +1,11 @@
-#:schema https://raw.githubusercontent.com/adbc-drivers/dev/refs/heads/main/schema/generate-schema.json
+#!/bin/bash
 # Copyright (c) 2026 ADBC Drivers Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#         http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,10 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-driver = "clickhouse"
+set -euo pipefail
 
-[lang]
-# Instead of wrapping their Rust code, use scripts to drive it
-[lang.script]
-[lang.script.build]
-lang-tools = ["rust"]
+main() {
+    cargo-about generate \
+                --all-features \
+                --fail \
+                --locked \
+                --target aarch64-apple-darwin,aarch64-unknown-linux-gnu,x86_64-pc-windows-msvc,x86_64-unknown-linux-gnu \
+                license.tpl \
+                -m adbc_clickhouse/Cargo.toml
+}
+
+main "$@"
