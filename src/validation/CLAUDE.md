@@ -24,11 +24,13 @@ Get validation tests passing using `pixi run validate`. Use `-k` to run a single
 
 ### Query-based tests (type/select, type/literal, type/bind, ingest)
 
-1. **Override queries**: If ClickHouse requires different SQL syntax, create override query files in `./validation/queries/` using the `.txtcase` format.
+1. **Override queries**: If ClickHouse requires different SQL syntax, create override query files in `./validation/queries/` using the `.txtcase` format.  Do not override sections that are identical to the base query.  When overriding, check the documentation for the database and add `tags.sql-type-name` to the TOML metadata to reflect the "canonical" type name for that data type.  Also, if data values need to be changed, make sure "extreme" values are tested.  For example, timestamps/datetimes should test the ANSI SQL extremes of 0001-01-01 and 9999-12-31, or if not possible, they should test the extremes of the database.
 
 2. **Mark as broken**: If a test cannot pass due to driver or vendor limitations, add to the metadata section:
    - `[tags] broken-driver = "reason"` - for driver limitations
    - `[tags] broken-vendor = "reason"` - for ClickHouse limitations
+
+   For ClickHouse limitations, try to link to database documentation.
 
 3. **Hide tests**: Use `hide = true` in metadata to completely hide irrelevant tests.
 
