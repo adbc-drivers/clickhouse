@@ -35,7 +35,7 @@ class TestConnection(connection_tests.TestConnection):
     @pytest.mark.xfail(reason="get_info() not implemented")
     def test_get_info(self, driver, conn, record_property) -> None:
         # TODO: un-hardcode this
-        record_property("driver_version", "v0.1.0-alpha")
+        record_property("driver_version", "v0.1.0-alpha.1")
         with conn.cursor() as cursor:
             version = cursor.execute("SELECT version()").fetchone()[0]
             record_property("vendor_version", version)
