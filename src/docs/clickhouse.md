@@ -20,15 +20,21 @@
 
 {{ heading|safe }}
 
-This driver provides access to [ClickHouse][clickhouse], an open-source data warehouse and analytical database.
+This driver provides access to [ClickHouse][clickhouse], an open source data warehouse and analytical database.  It is developed by ClickHouse, Inc.  The source code can be found at [adbc_clickhouse](https://github.com/ClickHouse/adbc_clickhouse); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
+
+ClickHouse is a trademark of ClickHouse, Inc. https://clickhouse.com
 
 ## Installation
 
 The ClickHouse driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install clickhouse
+dbc install --pre clickhouse
 ```
+
+:::{note}
+Only prerelease versions of the driver are currently available, so you must use `--pre` with dbc 0.2.0 or newer to install the driver.
+:::
 
 ## Connecting
 
