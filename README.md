@@ -29,6 +29,8 @@ This repo is used by the [ADBC Driver Foundry](https://adbc-drivers.org) to buil
 
 🐛 To report an issue, go to [github.com/ClickHouse/adbc_clickhouse/issues](https://github.com/ClickHouse/adbc_clickhouse/issues).
 
+📚 To browse the documentation, go to [docs.adbc-drivers.org/drivers/clickhouse](https://docs.adbc-drivers.org/drivers/clickhouse).
+
 ⌨️ To see the source code, go to [github.com/ClickHouse/adbc_clickhouse](https://github.com/ClickHouse/adbc_clickhouse).
 
 💬 To ask questions, email hello@adbc-drivers.org or chat with us on the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
