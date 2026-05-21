@@ -26,9 +26,12 @@ if __name__ == "__main__":
     template = Path(__file__).parent.parent.parent / "docs/clickhouse.md"
     template = template.resolve()
 
+    reports = [report.resolve() for report in Path(".").glob("validation-report*.xml")]
     generate_documentation.generate(
-        clickhouse.QUIRKS,
-        Path("validation-report.xml").resolve(),
+        "clickhouse",
+        lambda version, vendor: clickhouse.QUIRKS[0],
+        [("clickhouse", "ClickHouse")],
+        reports,
         template,
         args.output.resolve(),
     )

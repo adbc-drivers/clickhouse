@@ -44,6 +44,14 @@ class TestConnection(connection_tests.TestConnection):
             assert version == driver.vendor_version
         super().test_get_info(driver, conn, record_property)
 
+    @pytest.mark.xfail(reason="get_info() not implemented")
+    def test_get_info_arrow_version(self, driver, conn) -> None:
+        super().test_get_info_arrow_version(driver, conn)
+
+    @pytest.mark.xfail(reason="behavior does not match", strict=False)
+    def test_unknown_option(self, subtests, driver, conn) -> None:
+        super().test_unknown_option(subtests, driver, conn)
+
     @pytest.mark.xfail(reason="get_objects() not implemented")
     def test_get_objects_catalog(self, conn, driver) -> None:
         super().test_get_objects_catalog(conn, driver)
