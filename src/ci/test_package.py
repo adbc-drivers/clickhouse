@@ -18,7 +18,8 @@ import pytest
 
 def test_package() -> None:
     # Invalid URI, just ensure the driver itself loads
-    uri = "http://localhost:8080"
+    # (Test HTTPS to make sure we enabled it)
+    uri = "https://localhost:8080"
     with pytest.raises(adbc_driver_manager.dbapi.Error, match="network error"):
         with adbc_driver_manager.dbapi.connect(
             driver="clickhouse", uri=uri, autocommit=True

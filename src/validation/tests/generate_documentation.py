@@ -27,8 +27,10 @@ if __name__ == "__main__":
     template = template.resolve()
 
     generate_documentation.generate(
-        clickhouse.QUIRKS,
-        Path("validation-report.xml").resolve(),
+        "clickhouse",
+        lambda version, vendor: clickhouse.QUIRKS[0],
+        [("clickhouse", "ClickHouse")],
+        [Path("validation-report.xml").resolve()],
         template,
         args.output.resolve(),
     )

@@ -16,16 +16,23 @@ import sys
 from pathlib import Path
 
 import adbc_drivers_validation.model
+import adbc_drivers_validation.tests.conftest
 import pytest
 from adbc_drivers_validation.tests.conftest import (  # noqa: F401
     conn,
     conn_factory,
+    db_kwargs,
     manual_test,
-    pytest_addoption,
     pytest_collection_modifyitems,
 )
 
 from .clickhouse import ClickHouseQuirks
+
+
+def pytest_addoption(parser):
+    # We'll ignore this for now since we aren't testing multiple versions
+    adbc_drivers_validation.tests.conftest.pytest_addoption(parser)
+    parser.addoption("--vendor-version", action="store", default="25.12")
 
 
 @pytest.fixture(scope="session")

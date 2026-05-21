@@ -40,11 +40,12 @@ main() {
     esac
 
     pushd "$(pwd)/adbc_clickhouse"
+    local -r features=("-Fffi" "-Frustls-tls-aws-lc" "-Frustls-tls-native-roots")
     if [[ "${config}" == "release" ]]; then
-        cargo build --locked --release -Fffi
+        cargo build --locked --release "${features[@]}"
         cp "target/release/${prefix}adbc_clickhouse.${ext}" "../build/libadbc_driver_clickhouse.${ext}"
     else
-        cargo build --locked -Fffi
+        cargo build --locked "${features[@]}"
         cp "target/debug/${prefix}adbc_clickhouse.${ext}" "../build/libadbc_driver_clickhouse.${ext}"
     fi
 }

@@ -15,8 +15,12 @@
 
 driver = "clickhouse"
 
-[lang]
 # Instead of wrapping their Rust code, use scripts to drive it
-[lang.script]
 [lang.script.build]
+additional-make-args = ["TOOLCHAIN=rust"]
 lang-tools = ["rust"]
+
+[lang.script.validation]
+configs = [
+  { service_name = "test-service", vendor_version = "25.12" },
+]
