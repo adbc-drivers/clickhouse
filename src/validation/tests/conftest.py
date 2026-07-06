@@ -32,7 +32,7 @@ from .clickhouse import ClickHouseQuirks
 def pytest_addoption(parser):
     # We'll ignore this for now since we aren't testing multiple versions
     adbc_drivers_validation.tests.conftest.pytest_addoption(parser)
-    parser.addoption("--vendor-version", action="store", default="25.12")
+    parser.addoption("--vendor-version", action="store", default="26.4")
 
 
 @pytest.fixture(scope="session")

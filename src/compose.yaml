@@ -14,7 +14,7 @@
 
 services:
   test-service:
-    image: clickhouse/clickhouse-server:25.12
+    image: clickhouse/clickhouse-server:26.4
     environment:
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
       CLICKHOUSE_DATABASE: db
