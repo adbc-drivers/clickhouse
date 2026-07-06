@@ -22,5 +22,5 @@ lang-tools = ["rust"]
 
 [lang.script.validation]
 configs = [
-  { service_name = "test-service", vendor_version = "25.12" },
+  { service_name = "test-service", vendor_version = "26.4" },
 ]

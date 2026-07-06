@@ -155,7 +155,7 @@ jobs:
       matrix:
         include:
           # I think we only need to test one platform, but we can change that later
-          - { platform: linux, arch: amd64, runner: ubuntu-latest, service_name: "test-service", vendor_version: "25.12" }
+          - { platform: linux, arch: amd64, runner: ubuntu-latest, service_name: "test-service", vendor_version: "26.4" }
     permissions:
       contents: read
     steps:
