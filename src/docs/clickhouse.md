@@ -29,12 +29,8 @@ ClickHouse is a trademark of ClickHouse, Inc. https://clickhouse.com
 The ClickHouse driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install --pre clickhouse
+dbc install clickhouse
 ```
-
-:::{note}
-Only prerelease versions of the driver are currently available, so you must use `--pre` with dbc 0.2.0 or newer to install the driver.
-:::
 
 ## Connecting
 
@@ -60,6 +56,10 @@ Note: The example above is for Python using the [adbc-driver-manager](https://py
 ### Types
 
 {{ types|safe }}
+
+## Compatibility
+
+{{ compatibility_info|safe }}
 
 {{ footnotes|safe }}
 
