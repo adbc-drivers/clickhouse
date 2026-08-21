@@ -25,7 +25,7 @@ This repo is used by the [ADBC Driver Foundry](https://adbc-drivers.org) to buil
 
 ---
 
-📥 To install it with [dbc](https://docs.columnar.tech/dbc), run `dbc install --pre clickhouse`.
+📥 To install it with [dbc](https://docs.columnar.tech/dbc), run `dbc install clickhouse`.
 
 🐛 To report an issue, go to [github.com/ClickHouse/adbc_clickhouse/issues](https://github.com/ClickHouse/adbc_clickhouse/issues).
 
