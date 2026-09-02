@@ -40,4 +40,3 @@ INSERT INTO test_timestamptz (idx, res) VALUES (6, NULL);
 {"res": -2208988800000000000}
 {"res": 9223372036850000000}
 {"res": null}
-

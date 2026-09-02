@@ -42,4 +42,3 @@ INSERT INTO test_timestamptz (idx, res) VALUES (7, '2023-05-15 13:45:30.123456')
 {"res": null}
 {"res": -2208988800000000}
 {"res": 1684158330123456}
-
