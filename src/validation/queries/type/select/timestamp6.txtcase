@@ -16,20 +16,35 @@
 
 [tags]
 caveats = ["DateTime64 has limited range (1900 to 2299)"]
-sql-type-name = "DateTime64 (with time zone)"
+sql-type-name = "DateTime64(6)"
 
 // part: setup_query
 
-CREATE TABLE test_timestamptz (
+CREATE TABLE test_timestamp (
     idx Int32,
-    res Nullable(DateTime64(6, 'UTC'))
+    res Nullable(DateTime64(6))
 ) ENGINE = MergeTree() ORDER BY idx;
 
-INSERT INTO test_timestamptz (idx, res) VALUES (1, '2023-05-15 13:45:30');
-INSERT INTO test_timestamptz (idx, res) VALUES (2, '2000-01-01 00:00:00');
-INSERT INTO test_timestamptz (idx, res) VALUES (3, '1969-07-20 20:17:40');
-INSERT INTO test_timestamptz (idx, res) VALUES (4, '2299-12-31 23:59:59');
-INSERT INTO test_timestamptz (idx, res) VALUES (5, NULL);
+INSERT INTO test_timestamp (idx, res) VALUES (1, '2023-05-15 13:45:30');
+INSERT INTO test_timestamp (idx, res) VALUES (2, '2000-01-01 00:00:00');
+INSERT INTO test_timestamp (idx, res) VALUES (3, '1969-07-20 20:17:40');
+INSERT INTO test_timestamp (idx, res) VALUES (4, '2299-12-31 23:59:59');
+INSERT INTO test_timestamp (idx, res) VALUES (5, NULL);
+INSERT INTO test_timestamp (idx, res) VALUES (6, '1900-01-01 00:00:00.000000');
+INSERT INTO test_timestamp (idx, res) VALUES (7, '2023-05-15 13:45:30.123456');
+
+// part: expected_schema
+
+{
+    "format": "+s",
+    "children": [
+        {
+            "name": "res",
+            "format": "tsu:UTC",
+            "flags": ["nullable"]
+        }
+    ]
+}
 
 // part: expected
 
@@ -38,3 +53,5 @@ INSERT INTO test_timestamptz (idx, res) VALUES (5, NULL);
 {"res": -14182940000000}
 {"res": 10413791999000000}
 {"res": null}
+{"res": -2208988800000000}
+{"res": 1684158330123456}

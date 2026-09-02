@@ -15,21 +15,22 @@
 // part: metadata
 
 [tags]
-caveats = ["DateTime64 has limited range (1900 to 2299)"]
-sql-type-name = "DateTime64 (no time zone)"
+caveats = ["DateTime64 supports dates through 2299, but Arrow nanosecond timestamps end in 2262"]
+sql-type-name = "DateTime64(7)"
 
 // part: setup_query
 
 CREATE TABLE test_timestamp (
     idx Int32,
-    res Nullable(DateTime64(6))
+    res Nullable(DateTime64(7))
 ) ENGINE = MergeTree() ORDER BY idx;
 
-INSERT INTO test_timestamp (idx, res) VALUES (1, '2023-05-15 13:45:30');
-INSERT INTO test_timestamp (idx, res) VALUES (2, '2000-01-01 00:00:00');
-INSERT INTO test_timestamp (idx, res) VALUES (3, '1969-07-20 20:17:40');
-INSERT INTO test_timestamp (idx, res) VALUES (4, '2299-12-31 23:59:59');
-INSERT INTO test_timestamp (idx, res) VALUES (5, NULL);
+INSERT INTO test_timestamp (idx, res) VALUES (1, '2023-05-15 13:45:30.1234567');
+INSERT INTO test_timestamp (idx, res) VALUES (2, '2000-01-01 00:00:00.2345678');
+INSERT INTO test_timestamp (idx, res) VALUES (3, '1969-07-20 20:17:40.3456789');
+INSERT INTO test_timestamp (idx, res) VALUES (4, '1900-01-01 00:00:00.0000000');
+INSERT INTO test_timestamp (idx, res) VALUES (5, '2262-04-11 23:47:16.8');
+INSERT INTO test_timestamp (idx, res) VALUES (6, NULL);
 
 // part: expected_schema
 
@@ -38,7 +39,7 @@ INSERT INTO test_timestamp (idx, res) VALUES (5, NULL);
     "children": [
         {
             "name": "res",
-            "format": "tsu:UTC",
+            "format": "tsn:UTC",
             "flags": ["nullable"]
         }
     ]
@@ -46,8 +47,9 @@ INSERT INTO test_timestamp (idx, res) VALUES (5, NULL);
 
 // part: expected
 
-{"res": 1684158330000000}
-{"res": 946684800000000}
-{"res": -14182940000000}
-{"res": 10413791999000000}
+{"res": 1684158330123456700}
+{"res": 946684800234567800}
+{"res": -14182939654321100}
+{"res": -2208988800000000000}
+{"res": 9223372036800000000}
 {"res": null}
