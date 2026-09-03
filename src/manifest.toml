@@ -19,3 +19,6 @@ license = "MIT OR Apache-2.0"
 
 [ADBC]
 version = "v1.1.0"
+
+[Driver]
+entrypoint = "AdbcClickhouseInit"

@@ -16,5 +16,5 @@
 src/build/
 src/generated/
 target/
-.doit.db
+.doit.db*
 validation-report.xml
