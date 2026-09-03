@@ -21,4 +21,4 @@ license = "MIT OR Apache-2.0"
 version = "v1.1.0"
 
 [Driver]
-entrypoint = 'duckdb_adbc_init'
+entrypoint = "AdbcClickhouseInit"
