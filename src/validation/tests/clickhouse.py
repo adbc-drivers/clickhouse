@@ -22,8 +22,8 @@ class ClickHouseQuirks(model.DriverQuirks):
     driver = "adbc_driver_clickhouse"
     driver_name = "ADBC Driver Foundry Driver for ClickHouse"
     vendor_name = "ClickHouse"
-    vendor_version = "26.4"
-    short_version = "26.4"
+    vendor_version = "26.8.2.7"
+    short_version = "26.8"
     features = model.DriverFeatures(
         statement_bind=False,
         statement_prepare=False,
