@@ -40,10 +40,10 @@ To use the driver, provide the URI of a ClickHouse database as the `uri` option.
 from adbc_driver_manager import dbapi
 
 conn = dbapi.connect(
-  driver="clickhouse",
-  db_kwargs={
-      "uri": "http://localhost:8123/",
-  }
+    driver="clickhouse",
+    db_kwargs={
+        "uri": "http://localhost:8123/",
+    },
 )
 ```
 
