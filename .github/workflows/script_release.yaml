@@ -72,7 +72,7 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
 
-      - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f  # v2.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30  # v2.0.1
         with:
           cache: false
           components: "clippy"
@@ -183,7 +183,7 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
 
-      - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f  # v2.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30  # v2.0.1
         with:
           cache: false
           components: "clippy"
@@ -311,7 +311,7 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
 
-      - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f  # v2.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30  # v2.0.1
         with:
           cache: false
           components: "clippy"
@@ -386,7 +386,7 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
 
-      - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f  # v2.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30  # v2.0.1
         with:
           cache: false
           components: "clippy"
@@ -404,7 +404,7 @@ jobs:
       - name: Install tools
         working-directory: src
         run: |
-          cargo install cargo-about --version 0.9.2 --locked -F cli
+          cargo install cargo-about --version 0.9.3 --locked -F cli
 
       - name: Generate packages
         working-directory: src
